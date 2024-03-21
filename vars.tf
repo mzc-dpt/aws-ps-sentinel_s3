@@ -5,5 +5,5 @@ variable "region" {
 
 variable "acl_enabled" {
   type    = bool
-  default = true # ACL을 활성화하려면 true로 설정하세요. 비활성화하려면 false로 변경하세요.
+  default = false # ACL을 활성화하려면 true로 설정하세요. 비활성화하려면 false로 변경하세요.
 }

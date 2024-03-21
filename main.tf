@@ -1,10 +1,31 @@
-module "s3" {
-  source                     = "./module"
-  s3_acl                     = "private"
-  s3_ownership               = "BucketOwnerPreferred"
-  s3_block_public_acls       = true
-  s3_block_public_policy     = true
-  s3_ignore_public_acls      = true
-  s3_restrict_public_buckets = true
-  s3_sse_algorithm           = "aws:kms"
+resource "aws_s3_bucket" "example" {
+  bucket = "example-bucket-${random_id.example.hex}"
+}
+
+resource "aws_s3_bucket_ownership_controls" "example" {
+  bucket = aws_s3_bucket.example.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_acl" "example" {
+  depends_on = [aws_s3_bucket_ownership_controls.example]
+
+  bucket = aws_s3_bucket.example.id
+  acl    = var.acl_enabled
+}
+
+resource "aws_s3_bucket_public_access_block" "example" {
+  bucket = aws_s3_bucket.example.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+variable "acl_enabled" {
+  type = string
+  default = "private"
 }

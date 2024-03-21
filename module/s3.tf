@@ -39,7 +39,6 @@ resource "aws_s3_bucket_acl" "s3" {
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "s3_encryption" {
-  count  = local.create_kms_for_s3 ? 1 : 0
   bucket = aws_s3_bucket.s3.id
 
   rule {

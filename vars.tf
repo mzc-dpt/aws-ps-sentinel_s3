@@ -3,7 +3,44 @@ variable "region" {
   default = "ap-northeast-2"
 }
 
-variable "acl_enabled" {
-  type    = bool
-  default = false # ACL을 활성화하려면 true로 설정하세요. 비활성화하려면 false로 변경하세요.
+variable "s3_ownership" {}
+variable "s3_acl" {}
+variable "s3_block_public_acls" {
+  type = bool
+}
+variable "s3_block_public_policy" {
+  type = bool
+}
+variable "s3_ignore_public_acls" {
+  type = bool
+}
+variable "s3_restrict_public_buckets" {
+  type = bool
+}
+
+variable "s3_sse_algorithm" {
+  type        = string
+  description = "AES256 or aws:kms"
+}
+
+variable "principals_identifiers_for_s3_policy" {
+  type = list(string)
+}
+
+variable "accountID" {
+  type = string
+}
+
+locals {
+  s3_ownership                         = var.s3_ownership
+  s3_acl                               = var.s3_acl
+  s3_block_public_acls                 = var.s3_block_public_acls
+  s3_block_public_policy               = var.s3_block_public_policy
+  s3_ignore_public_acls                = var.s3_ignore_public_acls
+  s3_restrict_public_buckets           = var.s3_restrict_public_buckets
+  s3_sse_algorithm                     = var.s3_sse_algorithm
+  principals_identifiers_for_s3_policy = var.principals_identifiers_for_s3_policy
+
+  tags = {
+  }
 }

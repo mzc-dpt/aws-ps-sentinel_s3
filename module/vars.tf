@@ -1,7 +1,4 @@
-variable "region" {
-  type = string
-  default = "ap-northeast-2"
-}
+
 
 variable "s3_ownership" {}
 variable "s3_acl" {}
@@ -23,9 +20,6 @@ variable "s3_sse_algorithm" {
   description = "AES256 or aws:kms"
 }
 
-variable "principals_identifiers_for_s3_policy" {
-  type = list(string)
-}
 
 locals {
   s3_ownership                         = var.s3_ownership
@@ -35,7 +29,6 @@ locals {
   s3_ignore_public_acls                = var.s3_ignore_public_acls
   s3_restrict_public_buckets           = var.s3_restrict_public_buckets
   s3_sse_algorithm                     = var.s3_sse_algorithm
-  principals_identifiers_for_s3_policy = var.principals_identifiers_for_s3_policy
 
   tags = {
   }

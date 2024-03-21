@@ -1,5 +1,5 @@
 module "s3" {
-  source                     = "./"
+  source                     = "./module"
   s3_acl                     = "private"
   s3_ownership               = "BucketOwnerPreferred"
   s3_block_public_acls       = true

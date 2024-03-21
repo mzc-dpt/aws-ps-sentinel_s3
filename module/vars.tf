@@ -27,10 +27,6 @@ variable "principals_identifiers_for_s3_policy" {
   type = list(string)
 }
 
-variable "accountID" {
-  type = string
-}
-
 locals {
   s3_ownership                         = var.s3_ownership
   s3_acl                               = var.s3_acl

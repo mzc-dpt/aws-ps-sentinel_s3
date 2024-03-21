@@ -7,5 +7,4 @@ module "s3" {
   s3_ignore_public_acls      = true
   s3_restrict_public_buckets = true
   s3_sse_algorithm           = "aws:kms"
-  principals_identifiers_for_s3_policy = var.principals_identifiers_for_s3_policy
 }

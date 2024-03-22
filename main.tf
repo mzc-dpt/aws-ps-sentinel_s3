@@ -17,7 +17,7 @@ resource "aws_s3_bucket_acl" "example" {
   depends_on = [aws_s3_bucket_ownership_controls.example]
 
   bucket = aws_s3_bucket.example.id
-  acl    = var.acl_enabled ? "private" : "public-read" 
+  acl    = var.acl_enabled ? "private" : "public-read"
 }
 
 resource "aws_s3_bucket_public_access_block" "example" {
@@ -30,6 +30,6 @@ resource "aws_s3_bucket_public_access_block" "example" {
 }
 
 variable "acl_enabled" {
-  type = bool
+  type    = bool
   default = false
 }

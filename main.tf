@@ -30,6 +30,6 @@ resource "aws_s3_bucket_public_access_block" "example" {
 }
 
 variable "acl_enabled" {
-  type    = bool
+  type    = bool
   default = false
 }

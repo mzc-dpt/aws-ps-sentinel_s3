@@ -3,7 +3,7 @@ resource "random_id" "example" {
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "example-bucket-${random_id.example.hex}"
+  bucket = "s3-bucket-sentinel-${random_id.example.hex}"
 }
 
 resource "aws_s3_bucket_ownership_controls" "example" {

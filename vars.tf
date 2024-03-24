@@ -1,6 +1,6 @@
 variable "acl_enabled" {
   type    = bool
-  default = false
+  default = false # ACL을 활성화하려면 true로 설정하세요
 }
 
 variable "region" {
